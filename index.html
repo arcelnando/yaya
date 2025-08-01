@@ -1,235 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Login & Heartfelt Message</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #f7d9e3, #f2cbd0);
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    color: #4a2c46;
-  }
-
-  /* Container utama */
-  .container {
-    width: 100%;
-    max-width: 400px;
-    background: #fff0f6;
-    border-radius: 25px;
-    box-shadow: 0 15px 40px rgba(233, 150, 180, 0.3);
-    overflow: hidden;
-    transition: all 0.5s ease;
-  }
-
-  /* Halaman Login */
-  #loginPage {
-    padding: 45px 35px;
-    text-align: center;
-  }
-  #loginPage h2 {
-    margin-bottom: 35px;
-    color: #d6336c;
-    font-weight: 700;
-    font-size: 2.4rem;
-    letter-spacing: 0.1em;
-  }
-  #loginPage input[type="text"],
-  #loginPage input[type="password"] {
-    width: 100%;
-    padding: 14px 18px;
-    margin: 12px 0 24px 0;
-    border: 2.5px solid #f7a1b8;
-    border-radius: 18px;
-    font-size: 1.1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    background: #fff6fb;
-    color: #4a2c46;
-    font-weight: 500;
-  }
-  #loginPage input[type="text"]::placeholder,
-  #loginPage input[type="password"]::placeholder {
-    color: #d57ea3;
-    font-style: italic;
-  }
-  #loginPage input[type="text"]:focus,
-  #loginPage input[type="password"]:focus {
-    border-color: #d6336c;
-    box-shadow: 0 0 8px rgba(214, 51, 108, 0.5);
-    outline: none;
-    background: #ffe7f0;
-  }
-  #loginPage button {
-    width: 100%;
-    padding: 14px 0;
-    background: #d6336c;
-    color: #fff;
-    border: none;
-    border-radius: 25px;
-    font-weight: 700;
-    font-size: 1.3rem;
-    cursor: pointer;
-    box-shadow: 0 8px 16px rgba(214, 51, 108, 0.3);
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-  #loginPage button:hover {
-    background: #b02a57;
-    transform: scale(1.05);
-  }
-  #loginPage .footer-text {
-    margin-top: 24px;
-    font-size: 1rem;
-    color: #b97c99;
-  }
-
-  /* Halaman Heartfelt Message */
-  #ungkapanPage {
-    display: none;
-    padding: 40px 35px 50px 35px;
-    background: linear-gradient(135deg, #ffc1d8, #fcd3e1);
-    text-align: center;
-    color: #4a2c46;
-    border-radius: 25px;
-    animation: fadeIn 1s ease forwards;
-  }
-  #ungkapanPage h1 {
-    font-weight: 800;
-    font-size: 2.6rem;
-    margin-bottom: 24px;
-    letter-spacing: 0.05em;
-    text-shadow: 2px 2px 6px rgba(214, 51, 108, 0.35);
-  }
-  #ungkapanPage img {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 30px;
-    box-shadow: 0 12px 32px rgba(214, 51, 108, 0.5);
-    cursor: default;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-  }
-  #ungkapanPage img:hover {
-    transform: scale(1.07) rotate(-1deg);
-    box-shadow: 0 18px 42px rgba(214, 51, 108, 0.7);
-  }
-  #ungkapanPage p {
-    margin-top: 34px;
-    font-weight: 600;
-    font-size: 1.3rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.7;
-    background: rgba(255 255 255 / 0.85);
-    padding: 25px 30px;
-    border-radius: 22px;
-    box-shadow: 0 6px 20px rgba(214, 51, 108, 0.18);
-    user-select: none;
-    font-style: italic;
-    color: #80314e;
-  }
-  #ungkapanPage .signature {
-    margin-top: 54px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: #d6336c;
-    user-select: none;
-  }
-
-  @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(30px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
-
-  /* Responsive */
-  @media (max-width: 420px) {
-    #loginPage h2 {
-      font-size: 2rem;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOONDARK STORE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    #loginPage input[type="text"],
-    #loginPage input[type="password"] {
-      font-size: 1rem;
-      padding: 12px 15px;
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'Share Tech Mono', monospace;
+      overflow: hidden;
+      background: url('https://img1.pixhost.to/images/7635/627566979_ochobot.jpg') no-repeat center center fixed;
+      background-size: cover;
     }
-    #loginPage button {
-      font-size: 1.1rem;
-      padding: 12px 0;
+    #intro {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
     }
-    #ungkapanPage h1 {
-      font-size: 2rem;
+    #intro h1 {
+      font-size: 3em;
+      background: linear-gradient(90deg, #ff00cc, #00ffff, #ff00cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
     }
-    #ungkapanPage p {
-      font-size: 1.1rem;
-      padding: 18px 20px;
+    main {
+      display: none;
+      padding: 2em;
+      color: white;
+      min-height: 100vh;
+      overflow-y: auto;
+      background-color: rgba(0, 0, 0, 0.6);
     }
-  }
-</style>
+    .profile {
+      text-align: center;
+      margin-top: 1em;
+    }
+    .profile img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+    .section {
+      margin: 2em 0;
+    }
+    h2 {
+      color: #0ff;
+      margin-bottom: 0.5em;
+    }
+    ul {
+      list-style-type: square;
+      padding-left: 1.5em;
+    }
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      padding: 1em;
+      color: #ccc;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <!-- Login Page -->
-    <section id="loginPage" aria-label="Login Page">
-      <h2>Please Log In</h2>
-      <form id="loginForm" aria-describedby="descLoginForm">
-        <input type="text" id="username" placeholder="Username" aria-label="Username" required autocomplete="username" />
-        <input type="password" id="password" placeholder="Password" aria-label="Password" required autocomplete="current-password" />
-        <button type="submit">Login</button>
-      </form>
-      <div class="footer-text">To view the heartfelt message</div>
-    </section>
+  <div id="intro">
+    <h1>MOONDARK STORE</h1>
+  </div>
 
-<!-- Heartfelt Message Page -->
-<section id="ungkapanPage" aria-label="Heartfelt Message Page">
-  <h1>Dear Yaya,</h1>
-  <img src="https://i.ibb.co/j0Fyn8J/yaya.jpg" alt="Photo of Yaya" title="Yaya" />
-  <p>
-    With you, I’ve found the meaning of forever.<br>
-    You’re not just the love of my life — you’re my best friend and my greatest adventure.<br>
-    Every second with you is a reminder that true love does exist.
-  </p>
-  <div class="signature">With all my heart, Arcel</div>
-</section>
+  <main>
+    <div class="profile">
+  <img src="https://i.ibb.co/8ggpT9c8/IMG-20250801-150907-717.jpg" alt="Foto Profil" />
+</div>
 
-  <audio autoplay loop>
-    <source src="https://www.dropbox.com/scl/fi/eotlj8zn1mhvd01cxgshn/ssstik.io_1747368722397.mp3?rlkey=u1sg4ijhigsp0qpk1rmvviu23&st=7tbftzm3&dl=1" type="audio/mpeg" />
-    Your browser does not support the audio element.
+    <div class="section">
+      <h2>Murband 25k (khusus Jumat 15k)</h2>
+      <ul>
+        <li>bisa jadi kang band/jasa band</li>
+        <li>balmod kalo lu usaha</li>
+        <li>bisa band mantan</li>
+        <li>note: jangan disalahgunakan</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>PT Band 55k (khusus Jumat 20k)</h2>
+      <ul>
+        <li>bisa jadi kang band</li>
+        <li>bisa open murband</li>
+        <li>dapat teks tinjau langsung permanen</li>
+        <li>dapat panel bot</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Kebutuhan Hosting</h2>
+      <ul>
+        <li>1GB - 1k</li>
+        <li>2GB - 2k</li>
+        <li>3GB - 3k</li>
+        <li>4GB - 4k</li>
+        <li>5GB - 5k</li>
+        <li>6GB - 6k</li>
+        <li>7GB - 7k</li>
+        <li>8GB - 8k</li>
+        <li>9GB - 9k</li>
+        <li>Unli - 9k (Jumat 2k)</li>
+        <li>ADP - 10k (Jumat 5k)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <p><strong>Langsung ke WhatsApp:</strong><br>
+      <a href="https://wa.me/628151121289" target="_blank">Klik di sini</a></p>
+
+      <p><strong>Minat? PV Telegram:</strong><br>
+      <a href="https://t.me/celz2" target="_blank">t.me/celz2</a></p>
+    </div>
+
+    <footer>by Dark×Arcel's</footer>
+  </main>
+
+  <audio id="bgmusic" autoplay loop>
+    <source src="https://files.catbox.moe/lsfoom.mp3" type="audio/mp3">
+    Browsermu tidak mendukung audio.
   </audio>
 
-<script>
-  const loginForm = document.getElementById('loginForm');
-  const loginPage = document.getElementById('loginPage');
-  const ungkapanPage = document.getElementById('ungkapanPage');
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const audio = document.getElementById("bgmusic");
+      audio.play().catch(() => {
+        // Jika autoplay gagal karena policy browser, bisa disiapkan play manual
+        console.warn("Autoplay diblokir. Sentuh layar untuk mulai musik.");
+        const resumeAudio = () => {
+          audio.play();
+          document.removeEventListener("click", resumeAudio);
+        };
+        document.addEventListener("click", resumeAudio);
+      });
+    });
 
-  loginForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
-
-    if (username && password) {
-      loginPage.style.opacity = '0';
-      setTimeout(() => {
-        loginPage.style.display = 'none';
-        ungkapanPage.style.display = 'block';
-        ungkapanPage.style.opacity = '0';
-        setTimeout(() => {
-          ungkapanPage.style.opacity = '1';
-        }, 50);
-      }, 400);
-    } else {
-      alert('Please enter both username and password.');
-    }
-  });
-</script>
+    setTimeout(() => {
+      document.getElementById('intro').style.display = 'none';
+      document.querySelector('main').style.display = 'block';
+      document.body.style.overflow = 'auto';
+    }, 2000);
+  </script>
 </body>
-</html>
+        </html>
