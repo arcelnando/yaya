@@ -13,11 +13,25 @@
   }
 
   body {
-    background: radial-gradient(circle at center, #000, #050505 80%);
+    background: url('https://files.catbox.moe/39ichs.jpg') no-repeat center center fixed;
+    background-size: cover;
     color: #d0d0d0;
     overflow-x: hidden;
     text-align: center;
     min-height: 100vh;
+    transition: background 0.5s ease;
+  }
+
+  /* Overlay untuk meningkatkan keterbacaan teks */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
   }
 
   /* Intro animasi masuk */
@@ -91,7 +105,7 @@
   }
 
   .content {
-    background: rgba(10,10,10,0.6);
+    background: rgba(10,10,10,0.7);
     border-radius: 15px;
     border: 1px solid rgba(0,255,255,0.2);
     padding: 25px;
@@ -157,16 +171,47 @@
     pointer-events: none;
   }
 
+  /* Indikator musik */
+  .music-indicator {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(10,10,10,0.7);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.7em;
+    color: cyan;
+    border: 1px solid rgba(0,255,255,0.3);
+    backdrop-filter: blur(5px);
+    z-index: 100;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0,255,255,0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(0,255,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,255,255,0); }
+  }
+
   @media (max-width: 768px) {
     header h2 {font-size: 1.8em;}
     .content {margin: 15px;}
     pre {font-size: 0.9rem;}
+    .music-indicator {
+      top: 10px;
+      left: 10px;
+      font-size: 0.6em;
+    }
   }
 </style>
 </head>
 <body>
 
 <div id="intro"><h1>𝐙𝐄𝐍𝐘𝐓𝐇 𝐒𝐓𝐎𝐑𝐄</h1></div>
+
+<div class="music-indicator">
+  🔊 Klik di mana saja untuk memutar musik
+</div>
 
 <header>
   <h2>𝐙𝐄𝐍𝐘𝐓𝐇 𝐒𝐓𝐎𝐑𝐄</h2>
@@ -186,7 +231,7 @@
 - 𝐀𝐊𝐒𝐄𝐒 𝐀𝐏𝐊 𝐏𝐑𝐄𝐌𝐈𝐔𝐌
 - 𝐀𝐊𝐒𝐄𝐒 𝐒𝐔𝐍𝐓𝐈𝐊 𝐅𝐎𝐋𝐒
 - 𝐀𝐊𝐒𝐄𝐒 𝐋𝐀𝐘𝐀𝐍𝐀𝐍 𝐍𝐎𝐊𝐎𝐒
-- 𝐌𝐔𝐑𝐁𝐀𝐍
+- 𝐌𝐔𝐑𝐁𝐀𝐧
 - 𝐌𝐔𝐑 𝐔𝐍𝐁𝐀𝐍
 - 𝐅𝐑𝐄 𝐒𝐂 𝐁𝐔𝐆/𝐌𝐃
 - 𝐅𝐑𝐄 𝐖𝐀 𝐅𝐂/𝐆𝐁 𝐅𝐔𝐋𝐋 𝐔𝐏
@@ -256,6 +301,24 @@
 <footer>Credit by celz</footer>
 
 <script>
+// Buat elemen audio untuk musik
+const backgroundMusic = new Audio('https://files.catbox.moe/ehd7a2.mp3');
+backgroundMusic.loop = true;
+
+// Tunggu interaksi pengguna untuk memutar musik
+document.body.addEventListener('click', function playMusicOnce() {
+  backgroundMusic.play().then(() => {
+    // Sembunyikan indikator musik setelah diputar
+    document.querySelector('.music-indicator').style.display = 'none';
+  }).catch(error => {
+    console.log('Autoplay musik diblokir:', error);
+  });
+  
+  // Hapus event listener setelah digunakan
+  document.body.removeEventListener('click', playMusicOnce);
+});
+
+// Kode untuk efek partikel
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
 let w, h, particles = [];
