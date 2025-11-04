@@ -1,182 +1,263 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>QRIS - RikzzZhiro</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Nunito', sans-serif;
-      background: linear-gradient(to bottom, #0f0f1a, #1a1a2e);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZENYTH STORE OFFICIAL</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
 
-    .container {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
-      padding: 30px 20px;
-      text-align: center;
-      width: 100%;
-      max-width: 380px;
-      backdrop-filter: blur(12px);
-    }
+  body {
+    background: radial-gradient(circle at center, #000, #050505 80%);
+    color: #d0d0d0;
+    overflow-x: hidden;
+    text-align: center;
+    min-height: 100vh;
+  }
 
-    .store-name {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 26px;
-      color: #00eaff;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-    }
+  /* Intro animasi masuk */
+  #intro {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    animation: introFade 3s forwards ease-in-out;
+  }
 
-    .phone-number {
-      font-size: 16px;
-      color: #fff;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
+  #intro h1 {
+    font-size: 3em;
+    font-weight: 700;
+    color: cyan;
+    letter-spacing: 6px;
+    opacity: 0;
+    text-shadow: 0 0 25px cyan, 0 0 40px cyan;
+    animation: textReveal 2.5s 0.5s forwards ease-out;
+  }
 
-    .copy-btn, .download-btn {
-      background: linear-gradient(135deg, #00ffe1, #00c3ff);
-      color: #000;
-      border: none;
-      padding: 12px 18px;
-      font-size: 14px;
-      font-weight: bold;
-      border-radius: 10px;
-      cursor: pointer;
-      margin: 6px 0;
-      transition: all 0.2s ease-in-out;
-      width: 100%;
-    }
+  @keyframes introFade {
+    0% {opacity: 1;}
+    80% {opacity: 1;}
+    100% {opacity: 0; visibility: hidden;}
+  }
 
-    .copy-btn:active, .download-btn:active {
-      transform: scale(0.97);
-      box-shadow: 0 0 10px #00ffe1;
-    }
+  @keyframes textReveal {
+    0% {opacity: 0; transform: scale(0.8) translateY(40px);}
+    50% {opacity: 1; transform: scale(1.1);}
+    100% {opacity: 1; transform: scale(1) translateY(0);}
+  }
 
-    .copied-msg {
-      font-size: 13px;
-      color: #00ffb2;
-      display: none;
-      margin-top: 8px;
-    }
+  header {
+    margin-top: 70px;
+    padding: 1em;
+  }
 
-    .qris-container {
-      background: radial-gradient(circle, #00eaff50, #1a1a2e);
-      padding: 14px;
-      border-radius: 18px;
-      animation: glow 2.8s infinite ease-in-out;
-      margin: 12px 0 16px 0;
-    }
+  header h2 {
+    font-size: 2.4em;
+    color: cyan;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-shadow: 0 0 15px cyan, 0 0 30px #00ffff;
+    animation: fadeUp 1.5s ease;
+  }
 
-    .qris-img {
-      width: 250px;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 12px;
-    }
+  .profile {
+    margin: 30px auto 20px;
+    animation: fadeUp 2s ease;
+  }
 
-    @keyframes glow {
-      0% { box-shadow: 0 0 10px #00ffe1; }
-      50% { box-shadow: 0 0 24px #00ffe1; }
-      100% { box-shadow: 0 0 10px #00ffe1; }
-    }
+  .profile img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 2px solid rgba(0,255,255,0.4);
+    object-fit: cover;
+    box-shadow: 0 0 20px #00ffff40, 0 0 50px #00ffff20;
+    transition: 0.5s;
+  }
 
-    .note-dana {
-      font-size: 13px;
-      color: #88f1ff;
-      margin-bottom: 8px;
-    }
+  .profile img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px cyan, 0 0 60px #00ffff80;
+  }
 
-    .instructions {
-      font-size: 14px;
-      color: #ccc;
-      line-height: 1.6;
-    }
+  .content {
+    background: rgba(10,10,10,0.6);
+    border-radius: 15px;
+    border: 1px solid rgba(0,255,255,0.2);
+    padding: 25px;
+    margin: 25px 15px 60px;
+    backdrop-filter: blur(12px);
+    animation: fadeUp 2s ease;
+    box-shadow: 0 0 15px rgba(0,255,255,0.1);
+  }
 
-    .footer {
-      margin-top: 20px;
-      font-size: 12px;
-      color: #777;
-    }
-  </style>
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+
+  .content h3 {
+    color: cyan;
+    text-shadow: 0 0 8px cyan;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+
+  pre {
+    text-align: left;
+    white-space: pre-wrap;
+    line-height: 1.7;
+    color: #ccc;
+    font-size: 1rem;
+  }
+
+  a {
+    color: cyan;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  a:hover {
+    color: white;
+    text-shadow: 0 0 8px cyan;
+  }
+
+  footer {
+    margin: 25px 0 40px;
+    font-size: 0.8em;
+    color: #777;
+    letter-spacing: 1px;
+  }
+
+  /* Efek partikel */
+  canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+  }
+
+  /* Glow lembut di pinggir layar */
+  .glow {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(0,255,255,0.08), transparent 70%);
+    z-index: -2;
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    header h2 {font-size: 1.8em;}
+    .content {margin: 15px;}
+    pre {font-size: 0.9rem;}
+  }
+</style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="store-name">𝙍𝙞𝙠𝙯𝙯𝙕𝙝𝙞𝙧𝙤</div>
-    <div class="phone-number" id="phoneText">081553569793</div>
+<div id="intro"><h1>𝐙𝐄𝐍𝐘𝐓𝐇 𝐒𝐓𝐎𝐑𝐄</h1></div>
 
-    <button class="copy-btn" onclick="copyText()">𝘾𝙤𝙥𝙮 𝙉𝙤𝙢𝙤𝙧 𝘿𝙖𝙣𝙖</button>
-    <div class="copied-msg" id="copiedMsg">𝘾𝙤𝙥𝙞𝙚𝙙!</div>
+<header>
+  <h2>𝐙𝐄𝐍𝐘𝐓𝐇 𝐒𝐓𝐎𝐑𝐄</h2>
+</header>
 
-    <div class="qris-container">
-      <img class="qris-img" id="qrisImage" src="https://i.ibb.co/VpzdS91J/IMG-20250802-202332.jpg" alt="QRIS Payment">
-    </div>
+<div class="profile">
+  <img src="https://files.catbox.moe/pydvhq.jpg" alt="Profile ZENYTH">
+</div>
 
-    <button class="download-btn" onclick="downloadQR()">𝙐𝙣𝙙𝙪𝙝 𝙌𝙍𝙄𝙎</button>
+<div class="content">
+  <h3>DAFTAR PRODUK</h3>
+  <pre>
+𝐉𝐎𝐈𝐍 𝐏𝐀𝐑𝐓𝐍𝐄𝐑 𝐒𝐓𝐎𝐑𝐄 𝐁𝐘 𝐙𝐇𝐈𝐃𝐀𝐍
+➥𝐏𝐑𝐈𝐂𝐄: 𝟓𝟎.𝟎𝟎𝟎
 
-    <div class="note-dana">
-      Scan pakai DANA, OVO, Gopay, ShopeePay, dll.
-    </div>
+𝐁𝐄𝐍𝐄𝐅𝐈𝐓:
+- 𝐀𝐊𝐒𝐄𝐒 𝐀𝐏𝐊 𝐏𝐑𝐄𝐌𝐈𝐔𝐌
+- 𝐀𝐊𝐒𝐄𝐒 𝐒𝐔𝐍𝐓𝐈𝐊 𝐅𝐎𝐋𝐒
+- 𝐀𝐊𝐒𝐄𝐒 𝐋𝐀𝐘𝐀𝐍𝐀𝐍 𝐍𝐎𝐊𝐎𝐒
+- 𝐌𝐔𝐑𝐁𝐀𝐍
+- 𝐌𝐔𝐑 𝐔𝐍𝐁𝐀𝐍
+- 𝐅𝐑𝐄 𝐒𝐂 𝐁𝐔𝐆/𝐌𝐃
+- 𝐅𝐑𝐄 𝐖𝐀 𝐅𝐂/𝐆𝐁 𝐅𝐔𝐋𝐋 𝐔𝐏
+- 𝐀𝐏𝐊 𝐁𝐈𝐎𝐒𝐊𝐎𝐏
+- 𝐖𝐄𝐁 𝐍𝐎𝐊𝐎𝐒 𝐆𝐑𝐀𝐓𝐈𝐒
+- 𝐃𝐋𝐋
 
-    <div class="instructions">
-      Klik tombol untuk salin nomor DANA, atau<br>
-      scan QRIS di atas untuk pembayaran instan.
-    </div>
+📞 CHAT OWNER: 083845990204  
+🔗 <a href="https://wa.me/6283845990204" target="_blank">Klik untuk Chat Owner</a>
 
-    <div class="footer">
-      Nama tujuan: <strong>RikzzZhiro</strong><br>
-      Terima kasih atas dukunganmu!
-    </div>
-  </div>
+🌐 LINK GB STORE:  
+<a href="https://chat.whatsapp.com/LjOtq6VaZwADLJtUmNcV3i?mode=ems_copy_c" target="_blank">Gabung di Sini</a>
 
-  <audio id="copySound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2e533f5fc3.mp3?filename=success-1-6297.mp3" preload="auto"></audio>
+⟬ BALANCE ⟭  
+- 10.000.000 : Rp 5.000  
+- 20.000.000 : Rp 10.000  
+- 50.000.000 : Rp 15.000  
+- 100.000.000 : Rp 20.000  
+- 200.000.000 : Rp 25.000
+  </pre>
+</div>
 
-  <script>
-    function copyText() {
-      const text = document.getElementById("phoneText").innerText;
-      const msg = document.getElementById("copiedMsg");
-      const sound = document.getElementById("copySound");
+<div class="glow"></div>
+<canvas id="particles"></canvas>
 
-      const tempInput = document.createElement("textarea");
-      tempInput.value = text;
-      tempInput.setAttribute("readonly", "");
-      tempInput.style.position = "absolute";
-      tempInput.style.left = "-9999px";
-      document.body.appendChild(tempInput);
+<footer>Credit by celz</footer>
 
-      tempInput.select();
-      document.execCommand("copy");
-      document.body.removeChild(tempInput);
+<script>
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let w, h, particles = [];
 
-      msg.style.display = "block";
-      sound.play();
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
 
-      setTimeout(() => {
-        msg.style.display = "none";
-      }, 2000);
-    }
+class Particle {
+  constructor() {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.size = Math.random() * 2 + 0.5;
+    this.speedX = (Math.random() - 0.5) * 0.8;
+    this.speedY = (Math.random() - 0.5) * 0.8;
+    this.alpha = Math.random() * 0.5 + 0.3;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x < 0 || this.x > w) this.speedX *= -1;
+    if (this.y < 0 || this.y > h) this.speedY *= -1;
+  }
+  draw() {
+    ctx.fillStyle = `rgba(0,255,255,${this.alpha})`;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
 
-    function downloadQR() {
-      const link = document.createElement('a');
-      link.href = document.getElementById("qrisImage").src;
-      link.download = "QRIS-RikzzZhiro.jpg";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  </script>
+for (let i = 0; i < 100; i++) particles.push(new Particle());
+
+function animate() {
+  ctx.clearRect(0, 0, w, h);
+  particles.forEach(p => {p.update(); p.draw();});
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
 
 </body>
-  </html>
+                         </html>
